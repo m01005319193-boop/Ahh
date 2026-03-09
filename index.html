@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <titleأ. عبد الفتاح عبدون</title>
+    <!-- Google Fonts - خط عربي عصري -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #fefefe;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* reusable container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* header / navbar */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3c5c;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #b68b40;
+            font-weight: 400;
+            font-size: 1rem;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            color: #2c3e50;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #b68b40;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #1e3c5c;
+        }
+
+        /* hero section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c5c 0%, #2a5a7a 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content h2 span {
+            color: #e6b800;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #b68b40;
+            color: white;
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #9e762f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #b68b40;
+            color: #b68b40;
+            margin-right: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: #b68b40;
+            color: white;
+        }
+
+        /* section heading */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-heading h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3c5c;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-heading h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background-color: #b68b40;
+        }
+
+        /* about section */
+        .about {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h4 {
+            font-size: 2rem;
+            color: #1e3c5c;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+            font-size: 1.1rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #b68b40;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #718096;
+        }
+
+        /* courses section */
+        .courses {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .course-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .course-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .course-card:hover .course-img img {
+            transform: scale(1.1);
+        }
+
+        .course-info {
+            padding: 1.5rem;
+        }
+
+        .course-info h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1e3c5c;
+        }
+
+        .course-info p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-meta i {
+            color: #b68b40;
+            margin-left: 0.3rem;
+        }
+
+        .course-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #b68b40;
+        }
+
+        /* testimonials section */
+        .testimonials {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1e3c5c 0%, #1a4b6d 100%);
+            color: white;
+        }
+
+        .testimonials .section-heading h3 {
+            color: white;
+        }
+
+        .testimonials .section-heading h3::after {
+            background-color: #e6b800;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #e6b800;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h5 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* contact section */
+        .contact {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-info h4 {
+            font-size: 1.8rem;
+            color: #1e3c5c;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail i {
+            font-size: 1.5rem;
+            color: #b68b40;
+            width: 40px;
+            text-align: center;
+        }
+
+        .contact-detail p {
+            font-size: 1.1rem;
+            color: #4a5568;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #1e3c5c;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #b68b40;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1e3c5c;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #b68b40;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background-color: #1e3c5c;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #b68b40;
+        }
+
+        /* footer */
+        footer {
+            background-color: #1e3c5c;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-content a {
+            color: #e6b800;
+        }
+
+        /* responsive design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background-color: white;
+                padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .btn {
+                display: block;
+                width: 80%;
+                margin: 0.5rem auto;
+            }
+
+            .btn-outline {
+                margin-right: 0;
+            }
+
+            .section-heading h3 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0.8rem 0;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>أ Mr.Abdel Fattah Abdoun </h1>
+                    <span>مدرس اللغة العربية</span>
+                </div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="active">الرئيسية</a></li>
+                    <li><a href="#about">عن المدرس</a></li>
+                    <li><a href="#courses">الدورات</a></li>
+                    <li><a href="#testimonials">آراء الطلاب</a></li>
+                    <li><a href="#contact">اتصل بي</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>أتقن <span>اللغة العربية</span> بسهولة</h2>
+                    <p>مع أ. عبد الفتاح عبدون - أكثر من 15 سنة خبرة في تعليم العربية للناطقين بغيرها</p>
+                    <div>
+                        <a href="#courses" class="btn">استعرض الدورات</a>
+                        <a href="#contact" class="btn btn-outline">احجز درساً مجانياً</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-heading">
+                    <h3>من هو أ. عبد الفتاح عبدون؟</h3>
+                </div>
+                <div class="about-content">
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="المدرس محمد الفاضل">
+                    </div>
+                    <div class="about-text">
+                        <h4>شغفي هو تعليم العربية بأحدث الطرق</h4>
+                        <p>أنا عبد الفتاح عبدون، حاصل على ماجستير في تعليم اللغة العربية لغير الناطقين بها من جامعة القاهرة. أعمل منذ 15 عاماً في تدريس العربية في عدة دول عربية وأوروبية، وأؤمن بأن اللغة العربية يمكن أن تكون ممتعة وسهلة إذا قدمت بالطريقة الصحيحة.</p>
+                        <p>أسست منهجاً خاصاً يجمع بين القواعد والمحادثة والثقافة، مع استخدام وسائل تفاعلية حديثة تناسب جميع الأعمار والمستويات. هدفي أن أجعل كل طالب يحب العربية ويتقنها بثقة.</p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">+500</div>
+                                <div class="stat-label">طالب دربهم</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">سنة خبرة</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">+20</div>
+                                <div class="stat-label">دورة متخصصة</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section class="courses" id="courses">
+            <div class="container">
+                <div class="section-heading">
+                    <h3>الدورات المقدمة</h3>
+                </div>
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <div class="course-img">
+                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="دورة قواعد اللغة العربية">
+                        </div>
+                        <div class="course-info">
+                            <h4>قواعد اللغة العربية المتكاملة</h4>
+                            <p>شرح مبسط وشامل للنحو والصرف من البداية حتى الاحتراف مع تمارين تفاعلية.</p>
+                            <div class="course-meta">
+                                <span><i class="far fa-clock"></i> 12 أسبوع</span>
+                                <span><i class="far fa-user"></i> جميع المستويات</span>
+                            </div>
+                            <div class="course-price">$199</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-img">
+                            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="دورة المحادثة">
+                        </div>
+                        <div class="course-info">
+                            <h4>المحادثة العربية للمبتدئين</h4>
+                            <p>تطوير مهارة التحدث بطلاقة من خلال مواقف حياتية وحوارات تفاعلية.</p>
+                            <div class="course-meta">
+                                <span><i class="far fa-clock"></i> 8 أسابيع</span>
+                                <span><i class="far fa-user"></i> مبتدئ</span>
+                            </div>
+                            <div class="course-price">$149</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-img">
+                            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80" alt="دورة البلاغة">
+                        </div>
+                        <div class="course-info">
+                            <h4>البلاغة العربية والبيان</h4>
+                            <p>تعلم أسرار الجمال اللغوي في القرآن والشعر، وطور أسلوبك الخاص.</p>
+                            <div class="course-meta">
+                                <span><i class="far fa-clock"></i> 10 أسابيع</span>
+                                <span><i class="far fa-user"></i> متقدم</span>
+                            </div>
+                            <div class="course-price">$179</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-heading">
+                    <h3>ماذا قال طلابي؟</h3>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"الأستاذ عبد الفتاح عبدون غير نظرتي للغة العربية تماماً. كان يظنها صعبة لكنه جعلها ممتعة وسلسة. أنصح به بشدة."</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="طالبة">
+                            </div>
+                            <div class="author-info">
+                                <h5>سارة أحمد</h5>
+                                <p>طالبة من بريطانيا</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"درست مع أ. عبد الفتاح لمدة 6 أشهر والآن أستطيع قراءة الجرائد والتحدث بثقة. منهجه رائع ومتابعته مستمرة."</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="طالب">
+                            </div>
+                            <div class="author-info">
+                                <h5>عمر خالد</h5>
+                                <p>مهندس من ألمانيا</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"ما أعجبني في الأستاذ عبد الفتاح هو صبره وقدرته على تبسيط القواعد. ابنتي المراهقة أحبت العربية بفضله."</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="ولية أمر">
+                            </div>
+                            <div class="author-info">
+                                <h5>فاطمة الزهراء</h5>
+                                <p>ولية أمر من فرنسا</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-heading">
+                    <h3>تواصل معي</h3>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h4>معلومات الاتصال</h4>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>القاهرة، مصر - أو عبر الإنترنت</p>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone-alt"></i>
+                            <p>+20 123 456 7890</p>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <p>m.alfadil@arabicteacher.com</p>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-whatsapp"></i>
+                            <p>+20 123 456 7890 (واتساب)</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h4>أرسل لي رسالة</h4>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">الاسم الكامل</label>
+                                <input type="text" id="name" name="name" placeholder="أدخل اسمك" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">البريد الإلكتروني</label>
+                                <input type="email" id="email" name="email" placeholder="أدخل بريدك" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">الموضوع</label>
+                                <input type="text" id="subject" name="subject" placeholder="موضوع الرسالة">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">الرسالة</label>
+                                <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">إرسال</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>جميع الحقوق محفوظة &copy; 2026 - أ. محمد الفاضل</p>
+                <p>تصميم وتطوير: <a href="#">منصة تعليم العربية</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JavaScript for mobile menu -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link (optional)
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
